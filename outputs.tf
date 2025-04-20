@@ -1,36 +1,36 @@
 # 1단계 : VPC + Subnet + Routing Table + IGW + NAT Gateway 구성
 output "vpc_id" {
-  value       = aws_vpc.vpc_main.id
+  value       = module.vpc.vpc_id
   description = "VPC ID"
 }
 
 output "public_subnet_ids" {
-  value       = [aws_subnet.subnet_public_a.id, aws_subnet.subnet_public_c.id]
+  value       = module.vpc.public_subnet_ids
   description = "Public Subnet IDs"
 }
 
 output "private_app_subnet_ids" {
-  value       = [aws_subnet.subnet_private_app_a.id, aws_subnet.subnet_private_app_c.id]
+  value       = module.vpc.private_app_subnet_ids
   description = "Private App Subnet IDs"
 }
 
 output "private_db_subnet_ids" {
-  value       = [aws_subnet.subnet_private_db_a.id, aws_subnet.subnet_private_db_c.id]
+  value       = module.vpc.private_db_subnet_ids
   description = "Private DB Subnet IDs"
 }
 
 output "public_route_table_id" {
-  value       = aws_route_table.rtb_public_main.id
+  value       = module.vpc.public_route_table_id
   description = "Public Route Table ID"
 }
 
 output "nat_gateway_ids" {
-  value       = [aws_nat_gateway.natgw_a.id, aws_nat_gateway.natgw_c.id]
+  value       = module.vpc.nat_gateway_ids
   description = "NAT Gateway IDs"
 }
 
 output "eip_nat_ips" {
-  value       = [aws_eip.eip_nat_a.public_ip, aws_eip.eip_nat_c.public_ip]
+  value       = module.vpc.eip_nat_ips
   description = "Public IPs for NAT Gateways"
 }
 
